@@ -1,9 +1,9 @@
 #!/bin/sh
 
-S_YAZEFILES=/usr/local/lib/yaze
-S_CPMDSKS=/usr/local/lib/yaze/disks
-S_DOCFILES=/usr/local/lib/yaze/doc
-S_DOCFILES_html=/usr/local/lib/yaze/doc_html
+S_YAZEFILES=@LIBDIR@
+S_CPMDSKS=${S_YAZEFILES}/disks
+S_DOCFILES=${S_YAZEFILES}/doc
+S_DOCFILES_html=${S_YAZEFILES}/doc_html
 
 if [ ! -f .yazerc ]
 then

@@ -140,7 +140,7 @@ DISTRIB       =	Makefile_linux_32_i586 \
 		.minttyrc md5summer.exe metapad.exe metapad.ini \
 		simz80.pl .yazerc yaze.boot $(SRCS) $(DOC) \
 		yaze-cpm3_80-columns_46-lines.boot \
-		yaze.sh doc_ydskfiles.txt doc_ydskfiles_windows.txt \
+		yaze.in doc_ydskfiles.txt doc_ydskfiles_windows.txt \
 		install_disks.sh \
 		bios3.ydsk yaze-cpm3.boot \
 		BOOT_UTILS.ydsk BOOT_UTILS_windows.ydsk testdsk.ydsk \
@@ -155,7 +155,10 @@ DISTRIB       =	Makefile_linux_32_i586 \
 
 all:		yaze_bin cdm keytest
 
-yaze_bin:	$(YAZE_OBJS)
+yaze.sh:        yaze.in
+		sed "s,@LIBDIR@,"$(LIBDIR)"," < $< > $@
+
+yaze_bin:	yaze.sh $(YAZE_OBJS)
 		$(CC) $(CFLAGS) $(YAZE_OBJS) $(LIBS) -o $@
 		ln -f -s yaze.sh yaze
 
